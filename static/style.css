@@ -1,0 +1,72 @@
+﻿body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0; /* Removed padding as sections will handle it */
+    background-color: #f5f5f5; /* Light gray background */
+}
+
+.wrapper {
+    max-width: 700px; /* Adjust width as needed */
+    margin: 0 auto; /* Center the content horizontally */
+    display: flex; /* Allow stacking header, main, and footer */
+    flex-direction: column;
+    min-height: 100vh; /* Set minimum height for full viewport */
+    background-repeat: repeat-y; /* Repeat pattern vertically */
+    background-position: center; /* Center the pattern */
+}
+
+.header {
+    background-color: #3498db; /* Blue header background */
+    color: white;
+    padding: 15px 0;
+    text-align: center;
+    border-radius: 5px 5px 0 0; /* Rounded top corners */
+}
+
+    .header h1 {
+        margin: 0;
+    }
+
+.main {
+    flex: 1; /* Allow main content to fill remaining space */
+    padding: 20px;
+    display: flex;
+    justify-content: center; /* Center content box horizontally */
+    align-items: center; /* Center content box vertically */
+}
+
+.content-box {
+    background-color: white; /* White background for functionality area */
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+p {
+    text-align: center;
+    color: #888;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.file-upload {
+    margin-bottom: 15px;
+}
+
+#fileUpload {
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+}

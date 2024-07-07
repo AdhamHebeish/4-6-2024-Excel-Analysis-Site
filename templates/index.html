@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excel Upload and Analysis</title>
+    <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <h1>Excel Upload and Analysis</h1>
+        </header>
+        <main class="main">
+            <div class="content-box">
+                <p>Upload an Excel file (.xls or .xlsx) to analyze its contents.</p>
+                <form action="/analyze_excel" method="POST" enctype="multipart/form-data">
+                    <div class="file-upload">
+                        <input type="file" name="file" id="fileUpload" accept=".xlsx, .xls">
+                        <label for="fileUpload">Choose File</label>
+                    </div>
+                    <button type="submit" id="submitButton">Analyze</button>
+                </form>
+                <table id="data-table">
+                    <thead>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+        <footer class="footer"></footer>
+    </div>
+
+    <script src="../static/script.js"></script>
+</body>
+</html>
