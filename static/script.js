@@ -1,68 +1,32 @@
-const fileUpload = document.getElementById('fileUpload');
 const submitButton = document.getElementById('submitButton');
-const dataTable = document.getElementById('data-table');
+const errorMessage = document.getElementById('error-message');
 
 submitButton.addEventListener('click', async () => {
+    const fileUpload = document.getElementById('fileUpload');
     const file = fileUpload.files[0];
 
     if (!file) {
-        alert('Please select a file to upload.');
+        errorMessage.textContent = 'Please select a file to upload.';
         return;
     }
 
+    errorMessage.textContent = '';  // Clear previous error messages
+
     try {
-        const data = await processExcelFile(file);
-        if (data.error) {
-            alert(data.error);
+        const response = await fetch('/analyze_excel', {
+            method: 'POST',
+            body: new FormData(document.getElementById('uploadForm')),  // Use form ID
+        });
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            errorMessage.textContent = errorData.error;
             return;
         }
 
-        populateTable(data);
+        // No need for table population code here (handled by Python)
     } catch (error) {
         console.error(error);
-        alert('An error occurred during upload.');
+        errorMessage.textContent = 'An error occurred during upload.';
     }
 });
-
-async function processExcelFile(file) {
-    const formData = new FormData();
-    formData.append('file', file);
-
-    const response = await fetch('/analyze_excel', {
-        method: 'POST',
-        body: formData
-    });
-
-    const data = await response.json();
-    if (data.error) {
-        alert(data.error);
-        return;
-    }
-
-    // Update the table on successful processing
-    populateTable(data);
-}
-
-function populateTable(data) {
-    const tableBody = dataTable.getElementsByTagName('tbody')[0];
-
-    // Clear existing rows
-    tableBody.innerHTML = '';
-
-    // Create table header row (adjust as needed)
-    const headerRow = tableBody.insertRow();
-    for (const header of Object.keys(data[0])) {
-        const headerCell = headerRow.insertCell();
-        headerCell.textContent = header;
-    }
-
-    // Create data rows in original order
-    for (const rowIndex in data) {
-        const rowData = data[rowIndex];
-        const dataRow = tableBody.insertRow();
-        for (const value of Object.values(rowData)) {
-            const dataCell = dataRow.insertCell();
-            dataCell.textContent = value;
-        }
-    }
-}

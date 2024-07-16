@@ -1,12 +1,11 @@
 ﻿body {
     font-family: Arial, sans-serif;
     margin: 0;
-    padding: 0; /* Removed padding as sections will handle it */
-    background-color: #f5f5f5; /* Light gray background */
+    padding: 0;
+    background-image: url("background.jpg")
 }
 
 .wrapper {
-    max-width: 700px; /* Adjust width as needed */
     margin: 0 auto; /* Center the content horizontally */
     display: flex; /* Allow stacking header, main, and footer */
     flex-direction: column;
@@ -20,7 +19,8 @@
     color: white;
     padding: 15px 0;
     text-align: center;
-    border-radius: 5px 5px 0 0; /* Rounded top corners */
+    /* Stretch header from left to right */
+    width: 100%; /* Added */
 }
 
     .header h1 {
@@ -29,7 +29,7 @@
 
 .main {
     flex: 1; /* Allow main content to fill remaining space */
-    padding: 20px;
+    padding: 60px;
     display: flex;
     justify-content: center; /* Center content box horizontally */
     align-items: center; /* Center content box vertically */
@@ -40,6 +40,8 @@
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 25px;
+    border: 1px solid black;
 }
 
 p {
@@ -69,4 +71,35 @@ button {
     border: none;
     color: white;
     padding: 10px 20px;
+}
+
+.table-box {
+    background-color: white; /* White background for functionality area */
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 25px;
+    border: 1px solid black;
+}
+
+#data-table {
+    border-collapse: collapse; /* Ensures borders are visible for adjacent cells */
+    width: 100%; /* Adjust width as needed */
+    border: 1px solid black;
+}
+
+th, td {
+    border: 1px solid black; /* Black border for all table cells */
+    padding: 8px; /* Add some padding for better readability */
+}
+
+th {
+    text-align: left; /* Align header text to the left */
+    background-color: #8f8f8f; /* Dark gray background for header */
+}
+
+td {
+    text-align: left;
+    background-color: white;
+    color: black;
 }

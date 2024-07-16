@@ -14,17 +14,41 @@
         <main class="main">
             <div class="content-box">
                 <p>Upload an Excel file (.xls or .xlsx) to analyze its contents.</p>
-                <form action="/analyze_excel" method="POST" enctype="multipart/form-data">
+                <form action="/analyze_excel" method="POST" enctype="multipart/form-data" id="uploadForm">
                     <div class="file-upload">
                         <input type="file" name="file" id="fileUpload" accept=".xlsx, .xls">
                         <label for="fileUpload">Choose File</label>
                     </div>
                     <button type="submit" id="submitButton">Analyze</button>
                 </form>
+                <div id="error-message"></div>
+            </div>
+            <div class="table-box">
+                <p>Table with Analysis:</p>
                 <table id="data-table">
                     <thead>
+                        <tr>
+                            <th>Data/Header</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Country Code</th>
+                            <th>Mobile Number</th>
+                            <th>Address</th>
+                            <th>Notes</th>
+                        </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="table-body">
+                        <tr>
+                            <td>Data</td>
+                            {% for row in data %}
+                            <td>{{ row['First Name'] }}</td>
+                            <td>{{ row['Last Name'] }}</td>
+                            <td>{{ row['Country Code'] }}</td>
+                            <td>{{ row['Mobile Number'] }}</td>
+                            <td>{{ row['Address'] }}</td>
+                            <td>{{ row['Notes'] }}</td>
+                            {% endfor %}
+                        </tr>
                     </tbody>
                 </table>
             </div>
